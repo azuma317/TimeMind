@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		6D553BED3163ED4C6B6A0F3B /* Pods_TimeMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A155D27E26933E0BF13F9202 /* Pods_TimeMind.framework */; };
+		7554FE5D2018CB3200C4D3C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE5C2018CB3200C4D3C0 /* User.swift */; };
+		7554FE5F2018CB5100C4D3C0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE5E2018CB5100C4D3C0 /* Item.swift */; };
+		7554FE612018CB7100C4D3C0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE602018CB7100C4D3C0 /* Room.swift */; };
+		7554FE632018CB8B00C4D3C0 /* OpponentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */; };
 		75A7E93E2007B45100F26178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E93D2007B45100F26178 /* AppDelegate.swift */; };
 		75A7E9402007B45100F26178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E93F2007B45100F26178 /* ViewController.swift */; };
 		75A7E9432007B45100F26178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9412007B45100F26178 /* Main.storyboard */; };
 		75A7E9452007B45100F26178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9442007B45100F26178 /* Assets.xcassets */; };
 		75A7E9482007B45100F26178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9462007B45100F26178 /* LaunchScreen.storyboard */; };
-		75A7E950200871F500F26178 /* AZMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E94F200871F500F26178 /* AZMenu.swift */; };
-		75A7E95520089DA400F26178 /* SlideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E95420089DA400F26178 /* SlideMenuView.swift */; };
-		75A7E9572008A20200F26178 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E9562008A20200F26178 /* LeftMenuViewController.swift */; };
-		75A7E9592008A27000F26178 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E9582008A27000F26178 /* Helper.swift */; };
-		75A7E95B2008FAC900F26178 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E95A2008FAC900F26178 /* LeftMenuView.swift */; };
-		75A7E95F2008FC2400F26178 /* LeftMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E95E2008FC2400F26178 /* LeftMenuTableViewCell.swift */; };
-		75A7E9612008FC5000F26178 /* LeftMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9602008FC5000F26178 /* LeftMenuTableViewCell.xib */; };
-		75A7E96720090EF000F26178 /* LeftMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E96620090EF000F26178 /* LeftMenuTableView.swift */; };
+		75C278A720185BF0006048CD /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278A620185BF0006048CD /* Helper.swift */; };
+		75C278A920185C20006048CD /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278A820185C20006048CD /* SlideMenuController.swift */; };
+		75C278AD20187895006048CD /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278AC20187895006048CD /* ItemTableViewCell.swift */; };
+		75C278B120187CAE006048CD /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278B020187CAE006048CD /* MenuTableViewCell.swift */; };
+		75C278B520187CF8006048CD /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278B420187CF8006048CD /* LeftMenuViewController.swift */; };
+		75D53D0D2015D4450073D7AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D53D0C2015D4450073D7AF /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11891847F7CDF6A1228CFE33 /* Pods-TimeMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeMind.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind.debug.xcconfig"; sourceTree = "<group>"; };
 		6401D97B923161ADEADAD108 /* Pods-TimeMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeMind.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind.release.xcconfig"; sourceTree = "<group>"; };
+		7554FE5C2018CB3200C4D3C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7554FE5E2018CB5100C4D3C0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		7554FE602018CB7100C4D3C0 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentUser.swift; sourceTree = "<group>"; };
 		75A7E93A2007B45100F26178 /* TimeMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A7E93D2007B45100F26178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A7E93F2007B45100F26178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,14 +39,12 @@
 		75A7E9442007B45100F26178 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A7E9472007B45100F26178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75A7E9492007B45100F26178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		75A7E94F200871F500F26178 /* AZMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZMenu.swift; sourceTree = "<group>"; };
-		75A7E95420089DA400F26178 /* SlideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuView.swift; sourceTree = "<group>"; };
-		75A7E9562008A20200F26178 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
-		75A7E9582008A27000F26178 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		75A7E95A2008FAC900F26178 /* LeftMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
-		75A7E95E2008FC2400F26178 /* LeftMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuTableViewCell.swift; sourceTree = "<group>"; };
-		75A7E9602008FC5000F26178 /* LeftMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftMenuTableViewCell.xib; sourceTree = "<group>"; };
-		75A7E96620090EF000F26178 /* LeftMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuTableView.swift; sourceTree = "<group>"; };
+		75C278A620185BF0006048CD /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		75C278A820185C20006048CD /* SlideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		75C278AC20187895006048CD /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		75C278B020187CAE006048CD /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		75C278B420187CF8006048CD /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		75D53D0C2015D4450073D7AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A155D27E26933E0BF13F9202 /* Pods_TimeMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7554FE5B2018CB1C00C4D3C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7554FE5C2018CB3200C4D3C0 /* User.swift */,
+				7554FE5E2018CB5100C4D3C0 /* Item.swift */,
+				7554FE602018CB7100C4D3C0 /* Room.swift */,
+				7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		75A7E9312007B45100F26178 = {
 			isa = PBXGroup;
 			children = (
@@ -78,29 +93,36 @@
 			isa = PBXGroup;
 			children = (
 				75A7E93D2007B45100F26178 /* AppDelegate.swift */,
-				75A7E93F2007B45100F26178 /* ViewController.swift */,
+				75C278AA201876EC006048CD /* ViewController */,
+				75C278AB20187880006048CD /* Cell */,
+				7554FE5B2018CB1C00C4D3C0 /* Model */,
 				75A7E9412007B45100F26178 /* Main.storyboard */,
 				75A7E9442007B45100F26178 /* Assets.xcassets */,
 				75A7E9462007B45100F26178 /* LaunchScreen.storyboard */,
 				75A7E9492007B45100F26178 /* Info.plist */,
-				75A7E95320089D7F00F26178 /* Menu */,
-				75A7E94F200871F500F26178 /* AZMenu.swift */,
+				75D53D0C2015D4450073D7AF /* MenuViewController.swift */,
+				75C278A620185BF0006048CD /* Helper.swift */,
 			);
 			path = TimeMind;
 			sourceTree = "<group>";
 		};
-		75A7E95320089D7F00F26178 /* Menu */ = {
+		75C278AA201876EC006048CD /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				75A7E95420089DA400F26178 /* SlideMenuView.swift */,
-				75A7E9562008A20200F26178 /* LeftMenuViewController.swift */,
-				75A7E9582008A27000F26178 /* Helper.swift */,
-				75A7E95A2008FAC900F26178 /* LeftMenuView.swift */,
-				75A7E96620090EF000F26178 /* LeftMenuTableView.swift */,
-				75A7E95E2008FC2400F26178 /* LeftMenuTableViewCell.swift */,
-				75A7E9602008FC5000F26178 /* LeftMenuTableViewCell.xib */,
+				75A7E93F2007B45100F26178 /* ViewController.swift */,
+				75C278A820185C20006048CD /* SlideMenuController.swift */,
+				75C278B420187CF8006048CD /* LeftMenuViewController.swift */,
 			);
-			path = Menu;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75C278AB20187880006048CD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				75C278AC20187895006048CD /* ItemTableViewCell.swift */,
+				75C278B020187CAE006048CD /* MenuTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F4C76D09B364571C70FEFB43 /* Frameworks */ = {
@@ -183,7 +205,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75A7E9482007B45100F26178 /* LaunchScreen.storyboard in Resources */,
-				75A7E9612008FC5000F26178 /* LeftMenuTableViewCell.xib in Resources */,
 				75A7E9452007B45100F26178 /* Assets.xcassets in Resources */,
 				75A7E9432007B45100F26178 /* Main.storyboard in Resources */,
 			);
@@ -232,13 +253,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -252,15 +281,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A7E96720090EF000F26178 /* LeftMenuTableView.swift in Sources */,
+				7554FE5F2018CB5100C4D3C0 /* Item.swift in Sources */,
 				75A7E9402007B45100F26178 /* ViewController.swift in Sources */,
-				75A7E95F2008FC2400F26178 /* LeftMenuTableViewCell.swift in Sources */,
-				75A7E9592008A27000F26178 /* Helper.swift in Sources */,
-				75A7E95B2008FAC900F26178 /* LeftMenuView.swift in Sources */,
+				75C278A920185C20006048CD /* SlideMenuController.swift in Sources */,
+				75C278B120187CAE006048CD /* MenuTableViewCell.swift in Sources */,
 				75A7E93E2007B45100F26178 /* AppDelegate.swift in Sources */,
-				75A7E9572008A20200F26178 /* LeftMenuViewController.swift in Sources */,
-				75A7E95520089DA400F26178 /* SlideMenuView.swift in Sources */,
-				75A7E950200871F500F26178 /* AZMenu.swift in Sources */,
+				75D53D0D2015D4450073D7AF /* MenuViewController.swift in Sources */,
+				7554FE5D2018CB3200C4D3C0 /* User.swift in Sources */,
+				7554FE632018CB8B00C4D3C0 /* OpponentUser.swift in Sources */,
+				75C278AD20187895006048CD /* ItemTableViewCell.swift in Sources */,
+				75C278B520187CF8006048CD /* LeftMenuViewController.swift in Sources */,
+				75C278A720185BF0006048CD /* Helper.swift in Sources */,
+				7554FE612018CB7100C4D3C0 /* Room.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

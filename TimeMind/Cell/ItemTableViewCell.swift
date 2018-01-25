@@ -1,19 +1,21 @@
 //
-//  LeftMenuTableViewCell.swift
+//  ItemTableViewCell.swift
 //  TimeMind
 //
-//  Created by Azuma on 2018/01/12.
+//  Created by Azuma on 2018/01/24.
 //  Copyright © 2018年 Azuma. All rights reserved.
 //
 
 import UIKit
 
-class LeftMenuTableViewCell: UITableViewCell {
+class ItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -1,16 +1,15 @@
 //
-//  AZMenu.swift
+//  MenuViewController.swift
 //  TimeMind
 //
-//  Created by Azuma on 2018/01/12.
+//  Created by Azuma on 2018/01/22.
 //  Copyright © 2018年 Azuma. All rights reserved.
 //
 
 import Foundation
-
 import UIKit
 
-@objc public protocol AZMenuControllerDelegate {
+@objc public protocol MenuViewControllerDelegate {
     @objc optional func leftWillOpen()
     @objc optional func leftDidOpen()
     @objc optional func leftWillClose()
@@ -18,9 +17,9 @@ import UIKit
     @objc optional func rightTap()
 }
 
-public struct AZMenuOptions {
+public struct MenuOptions {
     public static var leftViewWidth: CGFloat = 270.0
-    public static var leftBezelWidth: CGFloat? = 16.0
+    public static var leftBazelWidth: CGFloat? = 16.0
     public static var contentViewScale: CGFloat = 0.96
     public static var contentViewOpacity: CGFloat = 0.5
     public static var contentViewDrag: Bool = false
@@ -38,7 +37,7 @@ public struct AZMenuOptions {
     public static var tapGesturesEnabled: Bool = true
 }
 
-class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
+class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
     
     public enum SlideAction {
         case open
@@ -58,7 +57,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         var velocity: CGFloat
     }
     
-    open weak var delegate: AZMenuControllerDelegate?
+    open weak var delegate: MenuViewControllerDelegate?
     
     open var opacityView = UIView()
     open var mainContainerView = UIView()
@@ -79,7 +78,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     public convenience init(mainViewController: UIViewController, leftMenuViewController: UIViewController) {
         self.init()
         self.mainViewController = mainViewController
-        leftViewController = leftMenuViewController
+        self.leftViewController = leftMenuViewController
         initView()
     }
     
@@ -87,7 +86,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         initView()
     }
     
-    deinit{}
+    deinit {}
     
     open func initView() {
         mainContainerView = UIView(frame: view.bounds)
@@ -100,34 +99,32 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         opacityframe.origin.y = opacityframe.origin.y + opacityOffset
         opacityframe.size.height = opacityframe.size.height - opacityOffset
         opacityView = UIView(frame: opacityframe)
-        opacityView.backgroundColor = AZMenuOptions.opacityViewBackgroundColor
-        opacityView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+        opacityView.backgroundColor = MenuOptions.opacityViewBackgroundColor
+        opacityView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         opacityView.layer.opacity = 0.0
         view.insertSubview(opacityView, at: 1)
         
         if leftViewController != nil {
             var leftFrame: CGRect = view.bounds
-            leftFrame.size.width = AZMenuOptions.leftViewWidth
+            leftFrame.size.width = MenuOptions.leftViewWidth
             leftFrame.origin.x = leftMinOrigin()
             let leftOffset: CGFloat = 0
             leftFrame.origin.y = leftFrame.origin.y + leftOffset
             leftFrame.size.height = leftFrame.size.height - leftOffset
             leftContainerView = UIView(frame: leftFrame)
             leftContainerView.backgroundColor = UIColor.clear
-            leftContainerView.autoresizingMask = UIViewAutoresizing.flexibleHeight
+            leftContainerView.autoresizingMask = .flexibleHeight
             view.insertSubview(leftContainerView, at: 2)
             addLeftGestures()
         }
-        
     }
     
-    // 画面回転時に呼ばれる
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         leftContainerView.isHidden = true
         
-        coordinator.animate(alongsideTransition: nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+        coordinator.animate(alongsideTransition: nil) { (context: UIViewControllerTransitionCoordinatorContext!) in
             self.closeLeftNonAnimation()
             self.leftContainerView.isHidden = false
             
@@ -135,7 +132,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
                 self.removeLeftGestures()
                 self.addLeftGestures()
             }
-        })
+        }
     }
     
     open override func viewDidLoad() {
@@ -147,7 +144,6 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         super.viewWillAppear(animated)
     }
     
-    // 回転の向きの制御
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if let mainController = self.mainViewController {
             return mainController.supportedInterfaceOrientations
@@ -155,7 +151,6 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         return UIInterfaceOrientationMask.all
     }
     
-    // 回転していいかの設定
     open override var shouldAutorotate: Bool {
         return mainViewController?.shouldAutorotate ?? false
     }
@@ -165,15 +160,12 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         setUpViewController(leftContainerView, targetViewController: leftViewController)
     }
     
-    // ステイタスバーの設定
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.mainViewController?.preferredStatusBarStyle ?? .default
     }
     
     open override func tapRight() {
-        
         self.delegate?.rightTap?()
-        
     }
     
     open override func openLeft() {
@@ -181,7 +173,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        self.delegate?.leftWillOpen?()
+        self.delegate?.leftWillOpen!()
         
         setOpenWindowLevel()
         
@@ -205,7 +197,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func addLeftGestures() {
         if leftViewController != nil {
-            if AZMenuOptions.panGesturesEnabled {
+            if MenuOptions.panGesturesEnabled {
                 if leftPanGesture == nil {
                     leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleLeftPanGesture(_:)))
                     leftPanGesture!.delegate = self
@@ -213,10 +205,10 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
             
-            if AZMenuOptions.tapGesturesEnabled {
+            if MenuOptions.tapGesturesEnabled {
                 if leftTapGesture == nil {
                     leftTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleLeft))
-                    leftTapGesture!.delegate = self
+                    leftTapGesture?.delegate = self
                     view.addGestureRecognizer(leftTapGesture!)
                 }
             }
@@ -260,7 +252,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         switch panGesture.state {
         case UIGestureRecognizerState.began:
             if LeftPanState.lastState != .ended &&
-                LeftPanState.lastState != .cancelled &&
+            LeftPanState.lastState != .cancelled &&
                 LeftPanState.lastState != .failed {
                 return
             }
@@ -320,7 +312,6 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         case UIGestureRecognizerState.failed, UIGestureRecognizerState.possible:
             break
         }
-        
         LeftPanState.lastState = panGesture.state
     }
     
@@ -331,7 +322,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         var frame = leftContainerView.frame
         frame.origin.x = finalXOrigin
         
-        var duration: TimeInterval = Double(AZMenuOptions.animationDuration)
+        var duration: TimeInterval = Double(MenuOptions.animationDuration)
         if velocity != 0.0 {
             duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
@@ -339,14 +330,18 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         
         addShadowToView(leftContainerView)
         
-        UIView.animate(withDuration: duration, delay: 0.0, options: AZMenuOptions.animationOptions, animations: { [weak self]() -> Void in
-            if let strongSelf = self {
-                strongSelf.leftContainerView.frame = frame
-                strongSelf.opacityView.layer.opacity = Float(AZMenuOptions.contentViewOpacity)
-                
-                AZMenuOptions.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransform(translationX: AZMenuOptions.leftViewWidth, y: 0)) : (strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: AZMenuOptions.contentViewScale, y: AZMenuOptions.contentViewScale))
-            }
-        }) { [weak self](Bool) -> Void in
+        UIView.animate(
+            withDuration: duration,
+            delay: 0.0,
+            options: MenuOptions.animationOptions,
+            animations: { [weak self]() -> Void in
+                if let strongSelf = self {
+                    strongSelf.leftContainerView.frame = frame
+                    strongSelf.opacityView.layer.opacity = Float(MenuOptions.contentViewOpacity)
+                    
+                    MenuOptions.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransform(translationX: MenuOptions.leftViewWidth, y: 0)) : (strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: MenuOptions.contentViewScale, y: MenuOptions.contentViewScale))
+                }
+        }) { [weak self](Bool) in
             if let strongSelf = self {
                 strongSelf.disableContentInteraction()
                 strongSelf.leftViewController?.endAppearanceTransition()
@@ -362,18 +357,22 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         var frame: CGRect = leftContainerView.frame
         frame.origin.x = finalXOrigin
         
-        var duration: TimeInterval = Double(AZMenuOptions.animationDuration)
+        var duration: TimeInterval = Double(MenuOptions.animationDuration)
         if velocity != 0.0 {
             duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
         
-        UIView.animate(withDuration: duration, delay: 0.0, options: AZMenuOptions.animationOptions, animations: { [weak self]() -> Void in
-            if let strongSelf = self {
-                strongSelf.leftContainerView.frame = frame
-                strongSelf.opacityView.layer.opacity = 0.0
-                strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            }
+        UIView.animate(
+            withDuration: duration,
+            delay: 0.0,
+            options: MenuOptions.animationOptions,
+            animations: { [weak self]() in
+                if let strongSelf = self {
+                    strongSelf.leftContainerView.frame = frame
+                    strongSelf.opacityView.layer.opacity = 0.0
+                    strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                }
         }) { [weak self](Bool) in
             if let strongSelf = self {
                 strongSelf.removeShadow(strongSelf.leftContainerView)
@@ -381,7 +380,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
                 strongSelf.leftViewController?.endAppearanceTransition()
                 strongSelf.delegate?.leftDidClose?()
             }
-        }
+         }
     }
     
     open override func toggleLeft() {
@@ -403,10 +402,9 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         return leftContainerView.frame.origin.x <= leftMinOrigin()
     }
     
-    open func changeMainViewController(key: String,  close: Bool) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+    open func changeMainViewController(key: String, close: Bool) {
+        let stroyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = stroyboard.instantiateViewController(withIdentifier: "ViewController")
         removeViewController(self.mainViewController)
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         nvc.edgesForExtendedLayout = UIRectEdge.all
@@ -418,8 +416,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     open func changeLeftViewWidth(_ width: CGFloat) {
-        
-        AZMenuOptions.leftViewWidth = width
+        MenuOptions.leftViewWidth = width
         var leftFrame: CGRect = view.bounds
         leftFrame.size.width = width
         leftFrame.origin.x = leftMinOrigin()
@@ -429,8 +426,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         leftContainerView.frame = leftFrame
     }
     
-    open func changeLeftViewController(_ leftViewController: UIViewController, closeLeft:Bool) {
-        
+    open func changeLeftViewController(_ leftViewController: UIViewController, closeLeft: Bool) {
         removeViewController(self.leftViewController)
         self.leftViewController = leftViewController
         setUpViewController(leftContainerView, targetViewController: leftViewController)
@@ -440,12 +436,12 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func leftMinOrigin() -> CGFloat {
-        return -AZMenuOptions.leftViewWidth
+        return -MenuOptions.leftViewWidth
     }
     
     fileprivate func panLeftResultInfoForVelocity(_ velocity: CGPoint) -> PanInfo {
         let thresholdVelocity: CGFloat = 1000.0
-        let pointOfNoReturn: CGFloat = CGFloat(floor(leftMinOrigin())) + AZMenuOptions.pointOfNoReturnWidth
+        let pointOfNoReturn: CGFloat = CGFloat(floor(leftMinOrigin())) + MenuOptions.pointOfNoReturnWidth
         let leftOrigin: CGFloat = leftContainerView.frame.origin.x
         
         var panInfo: PanInfo = PanInfo(action: .close, shouldBounce: false, velocity: 0.0)
@@ -489,23 +485,23 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate func applyLeftOpacity() {
         let openedLeftRatio: CGFloat = getOpenedLeftRatio()
-        let opacity: CGFloat = AZMenuOptions.contentViewOpacity * openedLeftRatio
+        let opacity: CGFloat = MenuOptions.contentViewOpacity * openedLeftRatio
         opacityView.layer.opacity = Float(opacity)
     }
     
     fileprivate func applyLeftContentViewScale() {
         let openedLeftRatio: CGFloat = getOpenedLeftRatio()
-        let scale: CGFloat = 1.0 - ((1.0 - AZMenuOptions.contentViewScale) * openedLeftRatio)
-        let drag: CGFloat = AZMenuOptions.leftViewWidth + leftContainerView.frame.origin.x
+        let scale: CGFloat = 1.0 - ((1.0 - MenuOptions.contentViewScale) * openedLeftRatio)
+        let drag: CGFloat = MenuOptions.leftViewWidth + leftContainerView.frame.origin.x
         
-        AZMenuOptions.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransform(translationX: drag, y: 0)) : (mainContainerView.transform = CGAffineTransform(scaleX: scale, y: scale))
+        MenuOptions.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransform(translationX: drag, y: 0)) : (mainContainerView.transform = CGAffineTransform(scaleX: scale, y: scale))
     }
     
     fileprivate func addShadowToView(_ targetContainerView: UIView) {
         targetContainerView.layer.masksToBounds = false
-        targetContainerView.layer.shadowOffset = AZMenuOptions.shadowOffset
-        targetContainerView.layer.shadowOpacity = Float(AZMenuOptions.shadowOpacity)
-        targetContainerView.layer.shadowRadius = AZMenuOptions.shadowRadius
+        targetContainerView.layer.shadowOffset = MenuOptions.shadowOffset
+        targetContainerView.layer.shadowOpacity = Float(MenuOptions.shadowOpacity)
+        targetContainerView.layer.shadowRadius = MenuOptions.shadowRadius
         targetContainerView.layer.shadowPath = UIBezierPath(rect: targetContainerView.bounds).cgPath
     }
     
@@ -519,7 +515,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func addContentOpacity() {
-        opacityView.layer.opacity = Float(AZMenuOptions.contentViewOpacity)
+        opacityView.layer.opacity = Float(MenuOptions.contentViewOpacity)
     }
     
     fileprivate func disableContentInteraction() {
@@ -531,7 +527,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func setOpenWindowLevel() {
-        if AZMenuOptions.hideStatusBar {
+        if MenuOptions.hideStatusBar {
             DispatchQueue.main.async(execute: {
                 if let window = UIApplication.shared.keyWindow {
                     window.windowLevel = UIWindowLevelStatusBar + 1
@@ -541,7 +537,7 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func setCloseWindowLevel() {
-        if AZMenuOptions.hideStatusBar {
+        if MenuOptions.hideStatusBar {
             DispatchQueue.main.async(execute: {
                 if let window = UIApplication.shared.keyWindow {
                     window.windowLevel = UIWindowLevelNormal
@@ -583,7 +579,6 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         enableContentInteraction()
     }
     
-    // MARK: UIGestureRecognizerDelegate
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
         let point: CGPoint = touch.location(in: view)
@@ -597,17 +592,16 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    // returning true here helps if the main view is fullwidth with a scrollview
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return AZMenuOptions.simultaneousGestureRecognizers
+        return MenuOptions.simultaneousGestureRecognizers
     }
     
-    fileprivate func slideLeftForGestureRecognizer( _ gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
-        return isLeftOpen() || AZMenuOptions.panFromBezel && isLeftPointContainedWithinBezelRect(point)
+    fileprivate func slideLeftForGestureRecognizer(_ gesture: UIGestureRecognizer, point: CGPoint) -> Bool {
+        return isLeftOpen() || MenuOptions.panFromBezel && isLeftPointContainedWithinBezelRect(point)
     }
     
-    fileprivate func isLeftPointContainedWithinBezelRect(_ point: CGPoint) -> Bool{
-        if let bezelWidth = AZMenuOptions.leftBezelWidth {
+    fileprivate func isLeftPointContainedWithinBezelRect(_ point: CGPoint) -> Bool {
+        if let bezelWidth = MenuOptions.leftBazelWidth {
             var leftBezelRect: CGRect = CGRect.zero
             let tuple = view.bounds.divided(atDistance: bezelWidth, from: CGRectEdge.minXEdge)
             leftBezelRect = tuple.slice
@@ -625,11 +619,11 @@ class AZMenuController: UIViewController, UIGestureRecognizerDelegate {
 
 extension UIViewController {
     
-    func slideMenuController() -> AZMenuController? {
+    func slideMenuController() -> MenuViewController? {
         var viewController: UIViewController? = self
         while viewController != nil {
-            if viewController is AZMenuController {
-                return viewController as? AZMenuController
+            if viewController is MenuViewController {
+                return viewController as? MenuViewController
             }
             viewController = viewController?.parent
         }
@@ -639,12 +633,6 @@ extension UIViewController {
     public func addLeftBarButtonWithImage(_ buttonImage: UIImage) {
         let leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.toggleLeft))
         navigationItem.leftBarButtonItem = leftButton
-    }
-    
-    public func addRightBarButtonWithImage() {
-        //        let rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.tapRight))
-        let rightButton: UIBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.tapRight))
-        navigationItem.rightBarButtonItem = rightButton
     }
     
     @objc public func toggleLeft() {
@@ -667,9 +655,9 @@ extension UIViewController {
         guard let slideController = slideMenuController(), let recognizers = slideController.view.gestureRecognizers else {
             return
         }
+        
         for recognizer in recognizers where recognizer is UIPanGestureRecognizer {
             targetScrollView.panGestureRecognizer.require(toFail: recognizer)
         }
     }
 }
-
