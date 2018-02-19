@@ -12,6 +12,10 @@
 		7554FE5F2018CB5100C4D3C0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE5E2018CB5100C4D3C0 /* Item.swift */; };
 		7554FE612018CB7100C4D3C0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE602018CB7100C4D3C0 /* Room.swift */; };
 		7554FE632018CB8B00C4D3C0 /* OpponentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */; };
+		755E04532039B1E500EDDE1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 755E04522039B1E500EDDE1A /* GoogleService-Info.plist */; };
+		755E0455203A9D7700EDDE1A /* LauchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E0454203A9D7700EDDE1A /* LauchViewController.swift */; };
+		755E0457203AA89800EDDE1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E0456203AA89800EDDE1A /* LoginViewController.swift */; };
+		755E045B203ACE8D00EDDE1A /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 755E045A203ACE8C00EDDE1A /* items.json */; };
 		75A7E93E2007B45100F26178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E93D2007B45100F26178 /* AppDelegate.swift */; };
 		75A7E9402007B45100F26178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E93F2007B45100F26178 /* ViewController.swift */; };
 		75A7E9432007B45100F26178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9412007B45100F26178 /* Main.storyboard */; };
@@ -32,6 +36,10 @@
 		7554FE5E2018CB5100C4D3C0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7554FE602018CB7100C4D3C0 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentUser.swift; sourceTree = "<group>"; };
+		755E04522039B1E500EDDE1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		755E0454203A9D7700EDDE1A /* LauchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchViewController.swift; sourceTree = "<group>"; };
+		755E0456203AA89800EDDE1A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		755E045A203ACE8C00EDDE1A /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = SOURCE_ROOT; };
 		75A7E93A2007B45100F26178 /* TimeMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A7E93D2007B45100F26178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A7E93F2007B45100F26178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +110,8 @@
 				75A7E9492007B45100F26178 /* Info.plist */,
 				75D53D0C2015D4450073D7AF /* MenuViewController.swift */,
 				75C278A620185BF0006048CD /* Helper.swift */,
+				755E04522039B1E500EDDE1A /* GoogleService-Info.plist */,
+				755E045A203ACE8C00EDDE1A /* items.json */,
 			);
 			path = TimeMind;
 			sourceTree = "<group>";
@@ -109,6 +119,8 @@
 		75C278AA201876EC006048CD /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				755E0454203A9D7700EDDE1A /* LauchViewController.swift */,
+				755E0456203AA89800EDDE1A /* LoginViewController.swift */,
 				75A7E93F2007B45100F26178 /* ViewController.swift */,
 				75C278A820185C20006048CD /* SlideMenuController.swift */,
 				75C278B420187CF8006048CD /* LeftMenuViewController.swift */,
@@ -205,6 +217,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				75A7E9482007B45100F26178 /* LaunchScreen.storyboard in Resources */,
+				755E04532039B1E500EDDE1A /* GoogleService-Info.plist in Resources */,
+				755E045B203ACE8D00EDDE1A /* items.json in Resources */,
 				75A7E9452007B45100F26178 /* Assets.xcassets in Resources */,
 				75A7E9432007B45100F26178 /* Main.storyboard in Resources */,
 			);
@@ -219,9 +233,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -253,6 +270,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -262,6 +280,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -281,9 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755E0457203AA89800EDDE1A /* LoginViewController.swift in Sources */,
 				7554FE5F2018CB5100C4D3C0 /* Item.swift in Sources */,
 				75A7E9402007B45100F26178 /* ViewController.swift in Sources */,
 				75C278A920185C20006048CD /* SlideMenuController.swift in Sources */,
+				755E0455203A9D7700EDDE1A /* LauchViewController.swift in Sources */,
 				75C278B120187CAE006048CD /* MenuTableViewCell.swift in Sources */,
 				75A7E93E2007B45100F26178 /* AppDelegate.swift in Sources */,
 				75D53D0D2015D4450073D7AF /* MenuViewController.swift in Sources */,
