@@ -12,8 +12,14 @@ class LeftMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    @IBAction func addRoom(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddRoomViewController") as! AddRoomViewController
+        let nvc: UINavigationController = UINavigationController(rootViewController: vc)
+        UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
+        present(nvc, animated: true, completion: nil)
     }
 
     /*

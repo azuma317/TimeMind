@@ -19,6 +19,18 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        addRightBarButtonWithImage(#imageLiteral(resourceName: "add"))
+    }
+    
+    func addRightBarButtonWithImage(_ buttonImage: UIImage) {
+        let rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(addItem))
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc func addItem() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddItemViewController") as! AddItemViewController
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true, completion: nil)
     }
 
 }

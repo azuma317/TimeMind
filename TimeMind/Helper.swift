@@ -107,6 +107,21 @@ class RoundButton: UIButton {
     }
 }
 
+class UnderLineTextField: UITextField {
+    
+    let height: CGFloat = 1.0
+    let color: UIColor = UIColor.gray
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        layer.addSublayer(border)
+    }
+}
+
 enum ViewControllerType {
     case welcome
     case items
@@ -120,13 +135,6 @@ enum MessageOwner {
 enum PhotoSource {
     case camera
     case library
-}
-
-enum ShowExtraView {
-    case contants
-    case profile
-    case preview
-    case map
 }
 
 extension UIApplication {

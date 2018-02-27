@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JkZ-Xd-NQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1407" y="118"/>
+            <point key="canvasLocation" x="-1602" y="118"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="YfC-9W-ALq">
@@ -146,6 +147,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="yQq-4O-xez" id="wFS-up-ZsO"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -166,6 +170,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="yQq-4O-xez" id="dpP-HM-9Ka"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -227,6 +234,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="yQq-4O-xez" id="tQw-eI-5dx"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,6 +257,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="yQq-4O-xez" id="wYO-Qu-zUi"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -267,6 +280,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="yQq-4O-xez" id="Z48-XC-6ie"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -314,7 +330,7 @@
                     <viewLayoutGuide key="safeArea" id="oc7-qP-sWM"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-631.20000000000005" y="117.39130434782609"/>
+            <point key="canvasLocation" x="-756" y="117"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -402,6 +418,9 @@
                                     <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Add Room"/>
+                                    <connections>
+                                        <action selector="addRoom:" destination="tzv-mK-okn" eventType="touchUpInside" id="saR-MB-xpq"/>
+                                    </connections>
                                 </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="60" id="Bdg-xV-jgQ" customClass="MenuTableViewCell" customModule="TimeMind" customModuleProvider="target">
@@ -412,11 +431,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile pic" translatesAutoresizingMaskIntoConstraints="NO" id="b30-RK-XSU">
-                                                    <rect key="frame" x="9" y="7" width="44" height="44"/>
+                                                    <rect key="frame" x="8" y="5" width="49" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGd-dj-KBk">
-                                                    <rect key="frame" x="61" y="11" width="224" height="38"/>
+                                                    <rect key="frame" x="65" y="17" width="224" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -500,10 +519,96 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdk-lx-JDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008.8" y="111.99400299850076"/>
+            <point key="canvasLocation" x="996" y="115.59220389805098"/>
+        </scene>
+        <!--Add Room View Controller-->
+        <scene sceneID="XTR-8g-SHq">
+            <objects>
+                <viewController storyboardIdentifier="AddRoomViewController" id="IhW-Vd-HYy" customClass="AddRoomViewController" customModule="TimeMind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WaT-vj-hth">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFB-wI-vTd">
+                                <rect key="frame" x="0.0" y="20" width="375" height="222.5"/>
+                                <connections>
+                                    <action selector="selectImg:" destination="IhW-Vd-HYy" eventType="touchUpInside" id="yEK-3q-9cY"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8n5-g6-LAn" customClass="UnderLineTextField" customModule="TimeMind" customModuleProvider="target">
+                                <rect key="frame" x="60" y="318" width="255" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="IhW-Vd-HYy" id="38L-4K-g3C"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoomName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rF-MK-aJd">
+                                <rect key="frame" x="60" y="295" width="90" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonimage" translatesAutoresizingMaskIntoConstraints="NO" id="9of-cs-Jcf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="222.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sAA-hg-InM" firstAttribute="trailing" secondItem="9of-cs-Jcf" secondAttribute="trailing" id="Buf-fd-9az"/>
+                            <constraint firstItem="kFB-wI-vTd" firstAttribute="centerX" secondItem="WaT-vj-hth" secondAttribute="centerX" id="C5j-2i-Ygz"/>
+                            <constraint firstItem="9of-cs-Jcf" firstAttribute="top" secondItem="sAA-hg-InM" secondAttribute="top" id="GfG-v8-ilp"/>
+                            <constraint firstItem="kFB-wI-vTd" firstAttribute="height" secondItem="9of-cs-Jcf" secondAttribute="height" id="LLq-N5-bVE"/>
+                            <constraint firstItem="9of-cs-Jcf" firstAttribute="leading" secondItem="sAA-hg-InM" secondAttribute="leading" id="WFR-Kz-05b"/>
+                            <constraint firstItem="kFB-wI-vTd" firstAttribute="width" secondItem="9of-cs-Jcf" secondAttribute="width" id="cBE-3y-HkB"/>
+                            <constraint firstItem="kFB-wI-vTd" firstAttribute="top" secondItem="sAA-hg-InM" secondAttribute="top" id="fDz-DR-ctY"/>
+                            <constraint firstItem="9of-cs-Jcf" firstAttribute="height" secondItem="WaT-vj-hth" secondAttribute="height" multiplier="1:3" id="qy3-dB-otz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sAA-hg-InM"/>
+                    </view>
+                    <connections>
+                        <outlet property="roomImageView" destination="9of-cs-Jcf" id="AOm-MY-Ech"/>
+                        <outlet property="roomNameField" destination="8n5-g6-LAn" id="eqT-gL-Rs3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8Y-Tf-KRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941.5999999999999" y="117.39130434782609"/>
+        </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="ANj-x3-ShY">
+            <objects>
+                <tableViewController storyboardIdentifier="AddItemViewController" id="Cul-tp-cKE" customClass="AddItemViewController" customModule="TimeMind" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eyU-tX-x3M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddItemCell" id="tE8-n4-TSd">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tE8-n4-TSd" id="3L1-fn-pL1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cul-tp-cKE" id="ppS-BB-1mC"/>
+                            <outlet property="delegate" destination="Cul-tp-cKE" id="rPm-Lp-Re3"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OxM-7g-cXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118" y="910"/>
         </scene>
     </scenes>
     <resources>
+        <image name="nonimage" width="1280" height="853"/>
         <image name="profile pic" width="200" height="200"/>
     </resources>
 </document>

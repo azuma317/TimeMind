@@ -21,10 +21,10 @@ class Room {
         self.member = member
     }
     
-    class func addRoom(forUserID: String, completion: @escaping () -> Void) {
+    class func addRoom(name: String, completion: @escaping () -> Void) {
         if let currentUserID = Auth.auth().currentUser?.uid {
             roomCount(completion: { (count) in
-                Database.database().reference().child("users").child(currentUserID).child("contacts").updateChildValues([forUserID:"room\(count+1)"])
+                Database.database().reference().child("users").child(currentUserID).child("contacts").updateChildValues(["\(count+1)":"room\(count+1)"])
                 
                 Database.database().reference().child("rooms").child("count").setValue("\(count+1)")
                 completion()
