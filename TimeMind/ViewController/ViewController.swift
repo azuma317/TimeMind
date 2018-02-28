@@ -69,7 +69,6 @@ extension ViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         tableView.reloadData()
     }
 }

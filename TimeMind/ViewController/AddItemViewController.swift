@@ -18,7 +18,17 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .dateAndTime
+        dateTextField.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
+    }
+    
+    @IBAction func dateTextFieldEditingBegin(_ sender: UITextField) {
+        let dateFormatter = DateFormatter()
+        let now = Date()
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        dateTextField.text = dateFormatter.string(from: now)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +37,21 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
         addLeftBarButtonWithString("Cancel")
         addRightBarButtonWithString("Done")
         nameTextField.becomeFirstResponder()
+    }
+    
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        dateTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @IBAction func notificationSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            dateTextField.alpha = 1
+        } else {
+            dateTextField.resignFirstResponder()
+            dateTextField.alpha = 0
+        }
     }
     
     func addLeftBarButtonWithString(_ buttonString: String) {

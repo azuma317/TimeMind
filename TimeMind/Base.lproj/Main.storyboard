@@ -374,7 +374,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZa-gP-prh" customClass="UnderLineTextField" customModule="TimeMind" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZa-gP-prh" customClass="UnderLineTextField" customModule="TimeMind" customModuleProvider="target">
                                 <rect key="frame" x="57" y="140" width="262.5" height="29"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -383,24 +383,48 @@
                                     <outlet property="delegate" destination="Fh6-ZO-vo8" id="kyo-1D-MEz"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Al8-Z3-XYd" customClass="UnderLineTextField" customModule="TimeMind" customModuleProvider="target">
-                                <rect key="frame" x="56.5" y="249" width="262.5" height="29"/>
+                            <textField opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Al8-Z3-XYd" customClass="UnderLineTextField" customModule="TimeMind" customModuleProvider="target">
+                                <rect key="frame" x="56.5" y="257" width="262.5" height="29"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="dateTextFieldEditingBegin:" destination="Fh6-ZO-vo8" eventType="editingDidBegin" id="kkQ-Oe-hjG"/>
                                     <outlet property="delegate" destination="Fh6-ZO-vo8" id="6bA-nv-8bL"/>
                                 </connections>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbU-sf-g5P">
+                                <rect key="frame" x="56" y="209" width="262.5" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtM-ea-vPo">
+                                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-Z1-uZe">
+                                        <rect key="frame" x="213.5" y="0.0" width="51" height="32"/>
+                                        <connections>
+                                            <action selector="notificationSwitch:" destination="Fh6-ZO-vo8" eventType="valueChanged" id="EkB-Cd-KfA"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="GOZ-mt-hCk"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CZa-gP-prh" firstAttribute="width" secondItem="ong-me-Ej1" secondAttribute="width" multiplier="0.7" id="5rf-Zo-9vF"/>
                             <constraint firstItem="CZa-gP-prh" firstAttribute="centerX" secondItem="ong-me-Ej1" secondAttribute="centerX" id="9cr-V8-Z7h"/>
+                            <constraint firstItem="Al8-Z3-XYd" firstAttribute="top" secondItem="bbU-sf-g5P" secondAttribute="bottom" constant="16" id="HOS-mP-gSg"/>
+                            <constraint firstItem="bbU-sf-g5P" firstAttribute="width" secondItem="ong-me-Ej1" secondAttribute="width" multiplier="0.7" id="aIe-3Y-r7N"/>
                             <constraint firstItem="Al8-Z3-XYd" firstAttribute="width" secondItem="ong-me-Ej1" secondAttribute="width" multiplier="0.7" id="cwa-ue-xAw"/>
                             <constraint firstItem="CZa-gP-prh" firstAttribute="top" secondItem="6NH-eM-Sdd" secondAttribute="top" constant="120" id="nPj-GH-hda"/>
+                            <constraint firstItem="bbU-sf-g5P" firstAttribute="centerX" secondItem="ong-me-Ej1" secondAttribute="centerX" id="oQb-lc-Cur"/>
+                            <constraint firstItem="bbU-sf-g5P" firstAttribute="top" secondItem="CZa-gP-prh" secondAttribute="bottom" constant="40" id="oR9-dA-HJA"/>
                             <constraint firstItem="Al8-Z3-XYd" firstAttribute="centerX" secondItem="ong-me-Ej1" secondAttribute="centerX" id="rYG-kH-BYn"/>
-                            <constraint firstItem="Al8-Z3-XYd" firstAttribute="top" secondItem="CZa-gP-prh" secondAttribute="bottom" constant="80" id="zwq-j6-rnK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6NH-eM-Sdd"/>
                     </view>
@@ -413,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dI6-c7-91L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="936"/>
+            <point key="canvasLocation" x="117.59999999999999" y="935.98200899550227"/>
         </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="HbH-zf-YvE">
