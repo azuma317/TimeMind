@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
+        self.tableView.register(UINib(nibName: "ItemNotificationCell", bundle: nil), forCellReuseIdentifier: "ItemNotificationCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,20 +45,28 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-        
-        cell.name.text = "sample"
-        cell.date.text = "2018/1/12"
-        
-        return cell
+        if indexPath.item % 2 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+            cell.title.text = "sample"
+            tableView.rowHeight = 60
+
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemNotificationCell", for: indexPath) as! ItemNotificationCell
+            cell.title.text = "sample"
+            cell.date.text = "2018/3/1"
+            tableView.rowHeight = 80
+            
+            return cell
+        }
     }
 }
 
 extension ViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return tableView.estimatedRowHeight
+//    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

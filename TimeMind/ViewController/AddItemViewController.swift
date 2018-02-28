@@ -2,101 +2,56 @@
 //  AddItemViewController.swift
 //  TimeMind
 //
-//  Created by Azuma on 2018/02/24.
+//  Created by Azuma on 2018/02/28.
 //  Copyright © 2018年 Azuma. All rights reserved.
 //
 
 import UIKit
 
-class AddItemViewController: UITableViewController {
+class AddItemViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var nameTextField: UnderLineTextField!
+    @IBOutlet weak var dateTextField: UnderLineTextField!
+    
+    @IBOutlet var textFields: [UnderLineTextField]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        addRightBarButtonWithString("完了")
-        addLeftBarbuttonwithString("キャンセル")
+        addLeftBarButtonWithString("Cancel")
+        addRightBarButtonWithString("Done")
+        nameTextField.becomeFirstResponder()
+    }
+    
+    func addLeftBarButtonWithString(_ buttonString: String) {
+        let leftButton: UIBarButtonItem = UIBarButtonItem(title: buttonString, style: .plain, target: self, action: #selector(close))
+        self.navigationItem.leftBarButtonItem = leftButton
     }
     
     func addRightBarButtonWithString(_ buttonString: String) {
         let rightButton: UIBarButtonItem = UIBarButtonItem(title: buttonString, style: .plain, target: self, action: #selector(save))
-        navigationItem.rightBarButtonItem = rightButton
-    }
-    
-    func addLeftBarbuttonwithString(_ buttonString: String) {
-        let leftButton: UIBarButtonItem = UIBarButtonItem(title: buttonString, style: .plain, target: self, action: #selector(close))
-        navigationItem.leftBarButtonItem = leftButton
-    }
-    
-    @objc func save() {
-        
+        self.navigationItem.rightBarButtonItem = rightButton
     }
     
     @objc func close() {
+        for item in textFields {
+            item.resignFirstResponder()
+        }
         dismiss(animated: true, completion: nil)
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    @objc func save() {
+        for item in textFields {
+            item.resignFirstResponder()
+        }
+        dismiss(animated: true, completion: nil)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddItemCell", for: indexPath)
-
-        return cell
-    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

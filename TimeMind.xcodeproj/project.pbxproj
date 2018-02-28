@@ -8,18 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		6D553BED3163ED4C6B6A0F3B /* Pods_TimeMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A155D27E26933E0BF13F9202 /* Pods_TimeMind.framework */; };
-		7527690A2040FDBF000A4098 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752769092040FDBF000A4098 /* AddItemViewController.swift */; };
 		7554FE5D2018CB3200C4D3C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE5C2018CB3200C4D3C0 /* User.swift */; };
 		7554FE5F2018CB5100C4D3C0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE5E2018CB5100C4D3C0 /* Item.swift */; };
 		7554FE612018CB7100C4D3C0 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE602018CB7100C4D3C0 /* Room.swift */; };
 		7554FE632018CB8B00C4D3C0 /* OpponentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */; };
 		755A49EC2043106000F2CE07 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755A49EB2043106000F2CE07 /* SwitchTableViewCell.swift */; };
-		755A49EE2043107D00F2CE07 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 755A49ED2043107D00F2CE07 /* SwitchTableViewCell.xib */; };
 		755E04532039B1E500EDDE1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 755E04522039B1E500EDDE1A /* GoogleService-Info.plist */; };
 		755E0455203A9D7700EDDE1A /* LauchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E0454203A9D7700EDDE1A /* LauchViewController.swift */; };
 		755E0457203AA89800EDDE1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E0456203AA89800EDDE1A /* LoginViewController.swift */; };
 		755E045B203ACE8D00EDDE1A /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 755E045A203ACE8C00EDDE1A /* items.json */; };
 		755E045D203C4C2600EDDE1A /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E045C203C4C2600EDDE1A /* AddRoomViewController.swift */; };
+		75A734C0204628530070D7DF /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A734BF204628530070D7DF /* AddItemViewController.swift */; };
+		75A734C3204632060070D7DF /* ItemNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A734C2204632060070D7DF /* ItemNotificationCell.xib */; };
+		75A734C5204632180070D7DF /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A734C4204632180070D7DF /* ItemCell.xib */; };
+		75A734C7204633F80070D7DF /* ItemNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A734C6204633F80070D7DF /* ItemNotificationCell.swift */; };
+		75A734C9204634030070D7DF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A734C8204634030070D7DF /* ItemCell.swift */; };
 		75A7E93E2007B45100F26178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E93D2007B45100F26178 /* AppDelegate.swift */; };
 		75A7E9402007B45100F26178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7E93F2007B45100F26178 /* ViewController.swift */; };
 		75A7E9432007B45100F26178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9412007B45100F26178 /* Main.storyboard */; };
@@ -27,7 +30,6 @@
 		75A7E9482007B45100F26178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A7E9462007B45100F26178 /* LaunchScreen.storyboard */; };
 		75C278A720185BF0006048CD /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278A620185BF0006048CD /* Helper.swift */; };
 		75C278A920185C20006048CD /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278A820185C20006048CD /* SlideMenuController.swift */; };
-		75C278AD20187895006048CD /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278AC20187895006048CD /* ItemTableViewCell.swift */; };
 		75C278B120187CAE006048CD /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278B020187CAE006048CD /* MenuTableViewCell.swift */; };
 		75C278B520187CF8006048CD /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C278B420187CF8006048CD /* LeftMenuViewController.swift */; };
 		75D53D0D2015D4450073D7AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D53D0C2015D4450073D7AF /* MenuViewController.swift */; };
@@ -36,18 +38,21 @@
 /* Begin PBXFileReference section */
 		11891847F7CDF6A1228CFE33 /* Pods-TimeMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeMind.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind.debug.xcconfig"; sourceTree = "<group>"; };
 		6401D97B923161ADEADAD108 /* Pods-TimeMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeMind.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimeMind/Pods-TimeMind.release.xcconfig"; sourceTree = "<group>"; };
-		752769092040FDBF000A4098 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		7554FE5C2018CB3200C4D3C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7554FE5E2018CB5100C4D3C0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7554FE602018CB7100C4D3C0 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		7554FE622018CB8B00C4D3C0 /* OpponentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentUser.swift; sourceTree = "<group>"; };
 		755A49EB2043106000F2CE07 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
-		755A49ED2043107D00F2CE07 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		755E04522039B1E500EDDE1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		755E0454203A9D7700EDDE1A /* LauchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchViewController.swift; sourceTree = "<group>"; };
 		755E0456203AA89800EDDE1A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		755E045A203ACE8C00EDDE1A /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = SOURCE_ROOT; };
 		755E045C203C4C2600EDDE1A /* AddRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
+		75A734BF204628530070D7DF /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		75A734C2204632060070D7DF /* ItemNotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemNotificationCell.xib; sourceTree = "<group>"; };
+		75A734C4204632180070D7DF /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		75A734C6204633F80070D7DF /* ItemNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNotificationCell.swift; sourceTree = "<group>"; };
+		75A734C8204634030070D7DF /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		75A7E93A2007B45100F26178 /* TimeMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A7E93D2007B45100F26178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A7E93F2007B45100F26178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +62,6 @@
 		75A7E9492007B45100F26178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75C278A620185BF0006048CD /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		75C278A820185C20006048CD /* SlideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
-		75C278AC20187895006048CD /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		75C278B020187CAE006048CD /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		75C278B420187CF8006048CD /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		75D53D0C2015D4450073D7AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -87,10 +91,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		755A49EF2043129A00F2CE07 /* xib */ = {
+		75A734C1204631C80070D7DF /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				755A49ED2043107D00F2CE07 /* SwitchTableViewCell.xib */,
+				75A734C2204632060070D7DF /* ItemNotificationCell.xib */,
+				75A734C4204632180070D7DF /* ItemCell.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -120,7 +125,7 @@
 				75C278AA201876EC006048CD /* ViewController */,
 				75C278AB20187880006048CD /* Cell */,
 				7554FE5B2018CB1C00C4D3C0 /* Model */,
-				755A49EF2043129A00F2CE07 /* xib */,
+				75A734C1204631C80070D7DF /* xib */,
 				75A7E9412007B45100F26178 /* Main.storyboard */,
 				75A7E9442007B45100F26178 /* Assets.xcassets */,
 				75A7E9462007B45100F26178 /* LaunchScreen.storyboard */,
@@ -142,7 +147,7 @@
 				75C278A820185C20006048CD /* SlideMenuController.swift */,
 				75C278B420187CF8006048CD /* LeftMenuViewController.swift */,
 				755E045C203C4C2600EDDE1A /* AddRoomViewController.swift */,
-				752769092040FDBF000A4098 /* AddItemViewController.swift */,
+				75A734BF204628530070D7DF /* AddItemViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -150,9 +155,10 @@
 		75C278AB20187880006048CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				75C278AC20187895006048CD /* ItemTableViewCell.swift */,
 				75C278B020187CAE006048CD /* MenuTableViewCell.swift */,
 				755A49EB2043106000F2CE07 /* SwitchTableViewCell.swift */,
+				75A734C6204633F80070D7DF /* ItemNotificationCell.swift */,
+				75A734C8204634030070D7DF /* ItemCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -239,7 +245,8 @@
 				75A7E9482007B45100F26178 /* LaunchScreen.storyboard in Resources */,
 				755E04532039B1E500EDDE1A /* GoogleService-Info.plist in Resources */,
 				755E045B203ACE8D00EDDE1A /* items.json in Resources */,
-				755A49EE2043107D00F2CE07 /* SwitchTableViewCell.xib in Resources */,
+				75A734C3204632060070D7DF /* ItemNotificationCell.xib in Resources */,
+				75A734C5204632180070D7DF /* ItemCell.xib in Resources */,
 				75A7E9452007B45100F26178 /* Assets.xcassets in Resources */,
 				75A7E9432007B45100F26178 /* Main.storyboard in Resources */,
 			);
@@ -321,7 +328,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A734C0204628530070D7DF /* AddItemViewController.swift in Sources */,
 				755E0457203AA89800EDDE1A /* LoginViewController.swift in Sources */,
+				75A734C9204634030070D7DF /* ItemCell.swift in Sources */,
 				7554FE5F2018CB5100C4D3C0 /* Item.swift in Sources */,
 				75A7E9402007B45100F26178 /* ViewController.swift in Sources */,
 				755E045D203C4C2600EDDE1A /* AddRoomViewController.swift in Sources */,
@@ -330,12 +339,11 @@
 				755A49EC2043106000F2CE07 /* SwitchTableViewCell.swift in Sources */,
 				75C278B120187CAE006048CD /* MenuTableViewCell.swift in Sources */,
 				75A7E93E2007B45100F26178 /* AppDelegate.swift in Sources */,
+				75A734C7204633F80070D7DF /* ItemNotificationCell.swift in Sources */,
 				75D53D0D2015D4450073D7AF /* MenuViewController.swift in Sources */,
 				7554FE5D2018CB3200C4D3C0 /* User.swift in Sources */,
 				7554FE632018CB8B00C4D3C0 /* OpponentUser.swift in Sources */,
-				75C278AD20187895006048CD /* ItemTableViewCell.swift in Sources */,
 				75C278B520187CF8006048CD /* LeftMenuViewController.swift in Sources */,
-				7527690A2040FDBF000A4098 /* AddItemViewController.swift in Sources */,
 				75C278A720185BF0006048CD /* Helper.swift in Sources */,
 				7554FE612018CB7100C4D3C0 /* Room.swift in Sources */,
 			);
