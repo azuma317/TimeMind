@@ -32,8 +32,8 @@ class User: NSObject {
                 user?.sendEmailVerification(completion: nil)
                 let storageRef = Storage.storage().reference().child("usersProfileImages").child(user!.uid)
                 let imageData = UIImageJPEGRepresentation(profileImg, 0.1)
-                storageRef.putData(imageData!, metadata: nil, completion: { (metadata, err) in
-                    if err == nil {
+                storageRef.putData(imageData!, metadata: nil, completion: { (metadata, error) in
+                    if error == nil {
                         let path = metadata?.downloadURL()?.absoluteString
                         let values = ["name": withName, "email": email, "profileImgLink": path!]
                         Database.database().reference().child("users").child((user?.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
@@ -89,6 +89,25 @@ class User: NSObject {
                     }
                 }).resume()
             }
+        }
+    }
+    
+    class func myInfo(completion: @escaping (User) -> Void) {
+        if let currentUser = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("users").child(currentUser).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let data = snapshot.value as? [String:String] {
+                    let name = data["name"]!
+                    let email = data["email"]!
+                    let link = URL.init(string: data["profileImgLink"]!)
+                    URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                        if error == nil {
+                            let profileImg = UIImage.init(data: data!)
+                            let user = User.init(name: name, email: email, id: currentUser, profileImg: profileImg!)
+                            completion(user)
+                        }
+                    }).resume()
+                }
+            })
         }
     }
     

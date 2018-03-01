@@ -10,9 +10,28 @@ import UIKit
 
 class LeftMenuViewController: UIViewController {
 
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var user: User?
+    var rooms: [Room] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        User.myInfo { [weak self] (user) in
+            DispatchQueue.main.async {
+                self?.userName.text = user.name
+                self?.profileImage.image = user.profileImg
+            }
+        }
+        Room.downloadAllRooms { [weak self] (rooms) in
+            DispatchQueue.main.async {
+                self?.rooms = rooms
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func addRoom(_ sender: Any) {
@@ -37,13 +56,14 @@ class LeftMenuViewController: UIViewController {
 extension LeftMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return rooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         
-        cell.name.text = "sample"
+        cell.name.text = rooms[indexPath.item].roomName
+        cell.roomImage.image = rooms[indexPath.item].profileImg
         
         return cell
     }

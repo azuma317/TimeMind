@@ -7,20 +7,29 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var items: [Item] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
         self.tableView.register(UINib(nibName: "ItemNotificationCell", bundle: nil), forCellReuseIdentifier: "ItemNotificationCell")
+        
+//        Item.downloadAllItems(forID: "1") { (items) in
+//            self.items = items
+//            self.tableView.reloadData()
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.setNavigationBarItem()
         addRightBarButtonWithImage(#imageLiteral(resourceName: "add"))
     }
@@ -41,20 +50,20 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item % 2 == 0 {
+        if items[indexPath.item].notification == "false" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-            cell.title.text = "sample"
+            cell.title.text = items[indexPath.item].content
             tableView.rowHeight = 60
 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemNotificationCell", for: indexPath) as! ItemNotificationCell
-            cell.title.text = "sample"
-            cell.date.text = "2018/3/1"
+            cell.title.text = items[indexPath.item].content
+            cell.date.text = items[indexPath.item].date
             tableView.rowHeight = 80
             
             return cell

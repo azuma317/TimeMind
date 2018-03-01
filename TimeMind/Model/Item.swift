@@ -27,9 +27,9 @@ class Item {
         self.notification = notification
     }
     
-    class func downloadAllItems(forUserID: String, completion: @escaping ([Item]) -> Void) {
+    class func downloadAllItems(forID: String, completion: @escaping ([Item]) -> Void) {
         if let currentUserID = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("users").child(currentUserID).child("contacts").child(forUserID).observe(.value, with: { (roomName) in
+            Database.database().reference().child("users").child(currentUserID).child("contacts").child(forID).observe(.value, with: { (roomName) in
                 if roomName.exists() {
                     let room = roomName.value as! String
                     Database.database().reference().child("rooms").child(room).child("items").observe(.value, with: { (snapshot) in
@@ -39,9 +39,9 @@ class Item {
                             for item in receiveItems {
                                 let value = item.value as! [String:String]
                                 let content = value["item"]!
-                                let date = value["date"]!
+                                let date = value["date"] ?? ""
                                 let name = value["owner"]!
-                                let notification = value["notificatoin"]!
+                                let notification = value["notification"]!
                                 let setItem = Item.init(owner: name, content: content, date: date, notification: notification)
                                 items.append(setItem)
                             }
@@ -78,14 +78,14 @@ class Item {
     }
     
     class func uploadItem(withItem: [String:Any], toID: String, completion: @escaping (Bool) -> Void) {
-        if let _ = Auth.auth().currentUser?.uid {
-            Room.getRoom(forUserID: toID, completion: { (room) in
-                    Database.database().reference().child("items").child(room).childByAutoId().updateChildValues(withItem)
-                    completion(true)
-            })
-        } else {
-            completion(false)
-        }
+//        if let _ = Auth.auth().currentUser?.uid {
+//            Room.getRoom(forUserID: toID, completion: { (room) in
+//                    Database.database().reference().child("items").child(room).childByAutoId().updateChildValues(withItem)
+//                    completion(true)
+//            })
+//        } else {
+//            completion(false)
+//        }
     }
     
 //    class func itemCount(room: String, completion: @escaping (Int) -> Void) {

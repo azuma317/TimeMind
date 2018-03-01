@@ -66,14 +66,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         self.loginView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.loginViewTopConstraint = NSLayoutConstraint.init(item: self.loginView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 100)
         self.loginViewTopConstraint.isActive = true
-        self.loginView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.45).isActive = true
+        self.loginView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.45).isActive = true
         self.loginView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8).isActive = true
         self.loginView.layer.cornerRadius = 8
         // RegistView
         self.view.insertSubview(self.registerView, belowSubview: self.createButton)
         self.registerView.translatesAutoresizingMaskIntoConstraints = false
         self.registerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.registViewTopConstraint = NSLayoutConstraint.init(item: self.registerView, attribute: .top, relatedBy: .equal, toItem: self.viewDidLoad(), attribute: .top, multiplier: 1, constant: 1000)
+        self.registViewTopConstraint = NSLayoutConstraint.init(item: self.registerView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 1000)
         self.registViewTopConstraint.isActive = true
         self.registerView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.6).isActive = true
         self.registerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8).isActive = true

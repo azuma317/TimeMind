@@ -50,7 +50,14 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @objc func save() {
-        roomNameField.resignFirstResponder()
+        let roomName = roomNameField.text
+        let roomImg = roomImageView.image
+        Room.addRoom(name: roomName!, roomImg: roomImg!) { [weak self] (status) in
+            if status {
+                self?.roomNameField.resignFirstResponder()
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     func openImagePicker(source: PhotoSource) {
