@@ -34,6 +34,7 @@ class Room {
                     let values = ["name": name, "owner": currentUserID, "roomImgLink": path!]
                     Database.database().reference().child("rooms").child(roomID).child("credentials").updateChildValues(values, withCompletionBlock: { (error, _) in
                         if error == nil {
+                            Database.database().reference().child("rooms").child(roomID).child("members").updateChildValues([currentUserID:"true"])
                             completion(true)
                         } else {
                             completion(false)
@@ -48,10 +49,9 @@ class Room {
     
     class func getRooms(completion: @escaping ([String]) -> Void) {
         if let currentUser = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("users").child(currentUser).child("contacts").observeSingleEvent(of: .value, with: { (snapshot) in
+            Database.database().reference().child("users").child(currentUser).child("contacts").observe(.value, with: { (snapshot) in
                 if snapshot.exists() {
                     let receiveRooms = snapshot.value as! [String:String]
-                    print(receiveRooms)
                     var rooms: [String] = []
                     for room in receiveRooms {
                         rooms.append(room.value)
@@ -66,7 +66,7 @@ class Room {
         getRooms(completion: { (roomNames) in
             var rooms: [Room] = []
             for roomName in roomNames {
-                Database.database().reference().child("rooms").child(roomName).child("credentials").observe(.value, with: { (snapshot) in
+                Database.database().reference().child("rooms").child(roomName).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
                     if snapshot.exists() {
                         let value = snapshot.value as! [String:String]
                         let name = value["name"]!
@@ -76,12 +76,14 @@ class Room {
                                 let roomImg = UIImage.init(data: data!)
                                 let room = Room.init(roomName: name, profileImg: roomImg!)
                                 rooms.append(room)
+                                if roomNames.count == rooms.count {
+                                    completion(rooms)
+                                }
                             }
                         }).resume()
                     }
                 })
             }
-            completion(rooms)
         })
     }
     

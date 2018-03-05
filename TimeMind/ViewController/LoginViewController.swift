@@ -208,8 +208,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UINavigationCo
         picker.dismiss(animated: true, completion: nil)
     }
     
-    
-    
     /*
     // MARK: - Navigation
 

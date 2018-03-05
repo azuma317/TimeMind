@@ -72,6 +72,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func save() {
+        
         for item in textFields {
             item.resignFirstResponder()
         }

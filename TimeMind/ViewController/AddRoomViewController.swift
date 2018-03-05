@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate {
+class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var roomNameField: UnderLineTextField!
     @IBOutlet weak var roomImageView: UIImageView!
@@ -19,6 +19,7 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePicker.delegate = self
         roomNameField.becomeFirstResponder()
     }
     
@@ -52,10 +53,10 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @objc func save() {
         let roomName = roomNameField.text
         let roomImg = roomImageView.image
-        Room.addRoom(name: roomName!, roomImg: roomImg!) { [weak self] (status) in
+        Room.addRoom(name: roomName!, roomImg: roomImg!) { [weak weakSelf = self] (status) in
             if status {
-                self?.roomNameField.resignFirstResponder()
-                self?.dismiss(animated: true, completion: nil)
+                weakSelf?.roomNameField.resignFirstResponder()
+                weakSelf?.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -97,6 +98,7 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.roomImageView.image = pickedImage
+            self.roomNameField.becomeFirstResponder()
         }
         picker.dismiss(animated: true, completion: nil)
     }

@@ -85,19 +85,19 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: MenuViewControllerDelegate {
     
     func leftWillOpen() {
-        print("WillOpen")
+//        print("WillOpen")
     }
     
     func leftDidOpen() {
-        print("DidOpen")
+//        print("DidOpen")
     }
     
     func leftWillClose() {
-        print("WillClose")
+//        print("WillClose")
     }
     
     func leftDidClose() {
-        print("DidClose")
+//        print("DidClose")
     }
     
     func rightTap() {

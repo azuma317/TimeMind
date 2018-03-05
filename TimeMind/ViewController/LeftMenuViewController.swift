@@ -20,16 +20,17 @@ class LeftMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        User.myInfo { [weak self] (user) in
+        User.myInfo { [weak weakSelf = self] (user) in
             DispatchQueue.main.async {
-                self?.userName.text = user.name
-                self?.profileImage.image = user.profileImg
+                weakSelf?.userName.text = user.name
+                weakSelf?.profileImage.image = user.profileImg
             }
         }
-        Room.downloadAllRooms { [weak self] (rooms) in
+        
+        Room.downloadAllRooms { [weak weakSelf = self] (rooms) in
             DispatchQueue.main.async {
-                self?.rooms = rooms
-                self?.tableView.reloadData()
+                weakSelf?.rooms = rooms
+                weakSelf?.tableView.reloadData()
             }
         }
     }
@@ -67,8 +68,6 @@ extension LeftMenuViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension LeftMenuViewController: UITableViewDelegate {

@@ -78,14 +78,14 @@ class Item {
     }
     
     class func uploadItem(withItem: [String:Any], toID: String, completion: @escaping (Bool) -> Void) {
-//        if let _ = Auth.auth().currentUser?.uid {
+        if let _ = Auth.auth().currentUser?.uid {
 //            Room.getRoom(forUserID: toID, completion: { (room) in
 //                    Database.database().reference().child("items").child(room).childByAutoId().updateChildValues(withItem)
 //                    completion(true)
 //            })
-//        } else {
-//            completion(false)
-//        }
+        } else {
+            completion(false)
+        }
     }
     
 //    class func itemCount(room: String, completion: @escaping (Int) -> Void) {
