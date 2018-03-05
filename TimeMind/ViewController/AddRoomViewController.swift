@@ -51,12 +51,14 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @objc func save() {
-        let roomName = roomNameField.text
-        let roomImg = roomImageView.image
-        Room.addRoom(name: roomName!, roomImg: roomImg!) { [weak weakSelf = self] (status) in
-            if status {
-                weakSelf?.roomNameField.resignFirstResponder()
-                weakSelf?.dismiss(animated: true, completion: nil)
+        if roomNameField.text != nil {
+            let roomName = roomNameField.text
+            let roomImg = roomImageView.image
+            Room.addRoom(name: roomName!, roomImg: roomImg!) { [weak weakSelf = self] (status) in
+                if status {
+                    weakSelf?.roomNameField.resignFirstResponder()
+                    weakSelf?.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }

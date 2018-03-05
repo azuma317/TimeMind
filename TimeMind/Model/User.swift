@@ -14,10 +14,10 @@ import FirebaseStorage
 
 class User: NSObject {
     
-    let name: String
-    let email: String
-    let id: String
-    var profileImg: UIImage
+    let name: String?
+    let email: String?
+    let id: String?
+    var profileImg: UIImage?
     
     init(name: String, email:String, id: String, profileImg: UIImage) {
         self.name = name

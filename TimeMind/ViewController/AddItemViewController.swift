@@ -12,8 +12,10 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UnderLineTextField!
     @IBOutlet weak var dateTextField: UnderLineTextField!
-    
     @IBOutlet var textFields: [UnderLineTextField]!
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
+    var roomID: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,9 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
         datePickerView.datePickerMode = .dateAndTime
         dateTextField.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
+        if let roomInfo = UserDefaults.standard.dictionary(forKey: "roomInformation") {
+            roomID = roomInfo["id"] as! String
+        }
     }
     
     @IBAction func dateTextFieldEditingBegin(_ sender: UITextField) {
@@ -72,11 +77,24 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func save() {
-        
-        for item in textFields {
-            item.resignFirstResponder()
+        if nameTextField.text != nil {
+            let content = nameTextField.text!
+            var date = ""
+            var notification = "false"
+            if notificationSwitch.isOn {
+                date = dateTextField.text!
+                notification = "true"
+            }
+            let item: Item = Item.init(content: content, date: date, notification: notification)
+            Item.send(item: item, toID: roomID, completion: { [weak weakSelf = self](status) in
+                if status {
+                    for item in (weakSelf?.textFields)! {
+                        item.resignFirstResponder()
+                    }
+                    weakSelf?.dismiss(animated: true, completion: nil)
+                }
+            })
         }
-        dismiss(animated: true, completion: nil)
     }
 
     /*

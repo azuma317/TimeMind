@@ -77,7 +77,11 @@ extension LeftMenuViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let id = rooms[indexPath.item].roomID
+        let name = rooms[indexPath.item].roomName
+        let roomInfo = ["id": id, "name": name]
+        UserDefaults.standard.set(roomInfo, forKey: "roomInformation")
+        closeLeft()
     }
     
 }

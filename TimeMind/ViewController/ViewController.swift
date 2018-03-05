@@ -21,10 +21,17 @@ class ViewController: UIViewController {
         self.tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
         self.tableView.register(UINib(nibName: "ItemNotificationCell", bundle: nil), forCellReuseIdentifier: "ItemNotificationCell")
         
-//        Item.downloadAllItems(forID: "1") { (items) in
-//            self.items = items
-//            self.tableView.reloadData()
-//        }
+        if let roomInformation = UserDefaults.standard.dictionary(forKey: "roomInformation") {
+            let roomID = roomInformation["id"] as! String
+            let roomName = roomInformation["name"] as! String
+            self.navigationController?.title = roomName
+            Item.downloadAllItems(forID: roomID, completion: { [weak weakSelf = self](allItems) in
+                DispatchQueue.main.async {
+                    weakSelf?.items = allItems
+                    weakSelf?.tableView.reloadData()
+                }
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +101,15 @@ extension ViewController: MenuViewControllerDelegate {
     
     func leftWillClose() {
 //        print("WillClose")
+        if let roomInformation = UserDefaults.standard.dictionary(forKey: "roomInformation") {
+            let roomID = roomInformation["id"] as! String
+            let roomName = roomInformation["name"] as! String
+            self.navigationController?.title = roomName
+            Item.downloadAllItems(forID: roomID, completion: { (allItems) in
+                self.items = allItems
+                self.tableView.reloadData()
+            })
+        }
     }
     
     func leftDidClose() {

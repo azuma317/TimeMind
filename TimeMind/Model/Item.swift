@@ -13,10 +13,10 @@ import FirebaseAuth
 
 class Item {
     
-    var owner: String
-    var content: String
-    var date: String
-    var notification: String
+    var owner: String?
+    var content: String?
+    var date: String?
+    var notification: String?
     private var toID: String?
     private var fromID: String?
     
@@ -27,29 +27,33 @@ class Item {
         self.notification = notification
     }
     
+    required init(content: String, date: String, notification: String) {
+        if let currentUser = Auth.auth().currentUser?.uid {
+            self.owner = currentUser
+        }
+        self.content = content
+        self.date = date
+        self.notification = notification
+    }
+    
     class func downloadAllItems(forID: String, completion: @escaping ([Item]) -> Void) {
-        if let currentUserID = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("users").child(currentUserID).child("contacts").child(forID).observe(.value, with: { (roomName) in
-                if roomName.exists() {
-                    let room = roomName.value as! String
-                    Database.database().reference().child("rooms").child(room).child("items").observe(.value, with: { (snapshot) in
-                        if snapshot.exists() {
-                            let receiveItems = snapshot.value as! [String:Any]
-                            var items: [Item] = []
-                            for item in receiveItems {
-                                let value = item.value as! [String:String]
-                                let content = value["item"]!
-                                let date = value["date"] ?? ""
-                                let name = value["owner"]!
-                                let notification = value["notification"]!
-                                let setItem = Item.init(owner: name, content: content, date: date, notification: notification)
-                                items.append(setItem)
-                            }
-                            completion(items)
-                        }
-                    })
+        if (Auth.auth().currentUser?.uid) != nil {
+            Database.database().reference().child("rooms").child(forID).child("items").observe(.value, with: { (snapshot) in
+                if snapshot.exists() {
+                    let receiveItems  = snapshot.value as! [String:Any]
+                    var items: [Item] = []
+                    for item in receiveItems {
+                        let value = item.value as! [String:String]
+                        let content = value["item"]!
+                        let date = value["date"] ?? ""
+                        let name = value["owner"]!
+                        let notification = value["notification"]!
+                        let setItem = Item.init(owner: name, content: content, date: date, notification: notification)
+                        items.append(setItem)
+                    }
+                    completion(items)
                 }
-            })
+                })
         }
     }
     
@@ -69,9 +73,8 @@ class Item {
     
     class func send(item: Item, toID: String, completion: @escaping (Bool) -> Void) {
         if let currentUserID = Auth.auth().currentUser?.uid {
-            let value = ["owner":currentUserID, "item":item.content, "date":item.date, "notification":"true"]
+            let value = ["owner": currentUserID, "item": item.content, "date": item.date, "notification": item.notification] as! [String:String]
             uploadItem(withItem: value, toID: toID, completion: { (status) in
-                
                 completion(status)
             })
         }
@@ -83,6 +86,8 @@ class Item {
 //                    Database.database().reference().child("items").child(room).childByAutoId().updateChildValues(withItem)
 //                    completion(true)
 //            })
+            Database.database().reference().child("rooms").child(toID).child("items").childByAutoId().updateChildValues(withItem)
+            completion(true)
         } else {
             completion(false)
         }

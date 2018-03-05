@@ -13,12 +13,14 @@ import FirebaseAuth
 
 class Room {
     
-    let roomName: String
-    var profileImg: UIImage
+    let roomName: String?
+    var profileImg: UIImage?
+    var roomID: String?
     
-    init(roomName: String, profileImg: UIImage) {
+    init(roomName: String, profileImg: UIImage, id: String) {
         self.roomName = roomName
         self.profileImg = profileImg
+        self.roomID = id
     }
     
     class func addRoom(name: String, roomImg: UIImage, completion: @escaping (Bool) -> Void) {
@@ -74,7 +76,7 @@ class Room {
                         URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
                             if error == nil {
                                 let roomImg = UIImage.init(data: data!)
-                                let room = Room.init(roomName: name, profileImg: roomImg!)
+                                let room = Room.init(roomName: name, profileImg: roomImg!, id: roomName)
                                 rooms.append(room)
                                 if roomNames.count == rooms.count {
                                     completion(rooms)

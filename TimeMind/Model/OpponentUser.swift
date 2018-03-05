@@ -39,7 +39,7 @@ class OpponentUser: NSObject {
                         User.info(id: ids[i], completion: { (user) in
                             let name = user.name
                             let profileImg = user.profileImg
-                            let opponentUser: OpponentUser = OpponentUser.init(id: ids[i], room: rooms[i], name: name, profileImg: profileImg)
+                            let opponentUser: OpponentUser = OpponentUser.init(id: ids[i], room: rooms[i], name: name!, profileImg: profileImg!)
                             opponentUsers.append(opponentUser)
                             completion(opponentUsers)
                         })
